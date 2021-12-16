@@ -1,6 +1,6 @@
 //validate password
 function validatePassword(password) {
-    if(typeof password ==="string") { //check if the input password is string
+    if(typeof password ==="string") { //check is the input password is string
         let specialChars = /[1234567890]/; //implement number values
         if(password.length >=3 && password.length <=10) { //check how long is the input pass
             if(specialChars.test(password) && password.includes("#") || password.includes("@") || password.includes("!")) { //check special characters
