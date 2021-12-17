@@ -1,7 +1,12 @@
 function withPrefix(prefix) {
 
     return function(name) {
-        return prefix + name;
+        if(typeof name == "string") {
+            return prefix + name;
+        } else {
+            console.log("Value must be a string!");
+        }
+        
     };
   }
   
