@@ -1,11 +1,19 @@
-function factory() {
-    const quote = 'Cool!';
+class factory {
+    constructor() {
+        this.quote = 'Cool!';
+    }
+    
+
     
 }
 
-console.log(factory().quote);
+// const factory = ({
+//    quote:'Cool!'
+//    
+// });
+//  verify(factory.quote, 'Cool!');
 
-verify(factory().quote, 'Cool!');
+verify(new factory().quote, 'Cool!');
 
 function verify(input, goal) {
   if (input === goal) {
