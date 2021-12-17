@@ -7,33 +7,37 @@ const emojiMappings = {
   };
   
   function useEmoji(input) {
-      input = input.splice(" ");
-      console.log(input);
+      const inputSplit = input.split(" ");
+      for(let i=0; i<inputSplit.length; i++) {
+          let index;
+          switch(inputSplit[i]) {
+            case "stop":
+                index = inputSplit.indexOf("stop");
+                inputSplit[index] = emojiMappings.stop;
+                break;
+            case "gwiazda":
+                index = inputSplit.indexOf("gwiazda");
+                inputSplit[index] = emojiMappings.gwiazda;
+                break;
+            case "samochód":
+                index = inputSplit.indexOf("samochód");
+                inputSplit[index] = emojiMappings.samochód;
+                break;
+            case "buduję":
+                index = inputSplit.indexOf("buduję");
+                inputSplit[index] = emojiMappings.buduję;
+                break;
+            case "budzik":
+                index = inputSplit.indexOf("budzik");
+                inputSplit[index] = emojiMappings.budzik;
+                break;
+            default:
+                break;
+          }
+      }
+
+    input= inputSplit.join(" ");
     return input;
   }
   
   console.log(useEmoji("Takiemu zachowaniu mówię stop i to mocny estop!"));
-//   function verify(input, goal) {
-//     if (input === goal) {
-//       console.log('Gratulacje!');
-//     } else {
-//       console.log(`Niestety, oczekiwano - ${goal}, otrzymano - ${input}`);
-//     }
-//   }
-  
-//   verify(
-//     useEmoji("Takiemu zachowaniu mówię stop i to mocny estop!"),
-//     "Takiemu zachowaniu mówię 🚫 i to mocny estop!"
-//   );
-//   verify(useEmoji("Jadę po nowy samochód :D"), "Jadę po nowy 🏎 :D");
-//   verify(useEmoji("Jadę po nowy samochódy :D"), "Jadę po nowy samochódy :D");
-//   verify(
-//     useEmoji("Właśnie buduję swoje skille w JS"),
-//     "Właśnie 🧱 swoje skille w JS"
-//   );
-//   verify(
-//     useEmoji("Właśnie nadbuduję swoje skille w JS"),
-//     "Właśnie nadbuduję swoje skille w JS"
-//   );
-//   verify(useEmoji("Buduję samochód"), "🧱 🏎");
-//   verify(useEmoji("BuDuję SaMocHód."), "🧱 🏎.");
