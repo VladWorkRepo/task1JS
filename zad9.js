@@ -357,25 +357,38 @@ const lessons = [
   ];
   
   function totalDuration() {
-   
-    let ht=0;
-    let hm=0;
+    let hours=0;
+    let minutes=0;
+    let seconds=0;
+    let moduleOneMinutes=0;
+    let moduleOneSeconds=0;
+    let moduleTwoMinutes=0;
+    let moduleTwoSeconds=0;
+    let moduleThreeMinutes=0;
+    let moduleThreeSeconds=0;
+
+    let temp=0;
 
     for(let i=0; i<lessons.length; i++) {
-        const sec = parseInt(lessons.length,10); // convert value to number if it's string
-        let hours   = Math.floor(sec / 3600); // get hours
-        let minutes = Math.floor((sec - (hours * 3600)) / 60); // get minutes
-        let seconds = sec - (hours * 3600) - (minutes * 60); //  get seconds
-        // add 0 if value < 10; Example: 2 => 02
-        // if (hours   < 10) {hours   = "0"+hours;}
-        // if (minutes < 10) {minutes = "0"+minutes;}
-        // if (seconds < 10) {seconds = "0"+seconds;}
-        ht+=hours;
-        hm+=minutes;
+        //get minutes and seconds from all course
+        let a = lessons[i].length.split(':'); //split minutes and second into 2 arrs
+        minutes += parseInt(a[0]); //sum all minutes
+        seconds += parseInt(a[1]); // sum all second
+
+
+
     }
 
+    console.log(moduleOneMinutes + ':' + moduleOneSeconds);
+    minutes += Math.trunc(seconds/60);
+    hours += Math.trunc(minutes/60);
+    minutes = minutes%60;
 
-    console.log(`Kurs Opanuj JavaScript trwa ${ht} godzin i ${hm} minut.\n` +
+
+
+
+
+    console.log(`Kurs Opanuj JavaScript trwa ${hours} godzin i ${minutes} minut.\n` +
     `Moduł Adama: ${'asd'} godzin ${'asd'} minut\n` +
     `Moduł Przemka: ${'asd'} godzin ${'asd'} minut\n` +
     `Moduł Marcina: ${'asd'} godzin ${'asd'} minut`);
