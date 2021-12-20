@@ -360,14 +360,18 @@ const lessons = [
     let hours=0;
     let minutes=0;
     let seconds=0;
+
+    let moduleOneTime=0;
+
+    let moduleOneHours=0;
     let moduleOneMinutes=0;
     let moduleOneSeconds=0;
+    let moduleTwoHours=0;
     let moduleTwoMinutes=0;
     let moduleTwoSeconds=0;
+    let moduleThreeHours=0;
     let moduleThreeMinutes=0;
     let moduleThreeSeconds=0;
-
-    let temp=0;
 
     for(let i=0; i<lessons.length; i++) {
         //get minutes and seconds from all course
@@ -375,23 +379,47 @@ const lessons = [
         minutes += parseInt(a[0]); //sum all minutes
         seconds += parseInt(a[1]); // sum all second
 
-
+        //get time for each module
+        if(lessons[i].name.includes('[1x')) {
+            moduleOneMinutes += parseInt(a[0]);
+            moduleOneSeconds += parseInt(a[1]);
+        } else if(lessons[i].name.includes('[2x')) {
+            moduleTwoMinutes += parseInt(a[0]);
+            moduleTwoSeconds += parseInt(a[1]);
+        } else if(lessons[i].name.includes('[3x')) {
+            moduleThreeMinutes += parseInt(a[0]);
+            moduleThreeSeconds += parseInt(a[1]);
+        }
 
     }
 
-    console.log(moduleOneMinutes + ':' + moduleOneSeconds);
+    moduleOneMinutes += Math.trunc(moduleOneSeconds/60);
+    moduleOneHours += Math.trunc(moduleOneMinutes/60);
+    moduleOneMinutes = moduleOneMinutes % 60;
+
+    moduleTwoMinutes += Math.trunc(moduleTwoSeconds/60);
+    moduleTwoHours += Math.trunc(moduleTwoMinutes/60);
+    moduleTwoMinutes = moduleTwoMinutes % 60;
+
+    moduleThreeMinutes += Math.trunc(moduleThreeSeconds/60);
+    moduleThreeHours += Math.trunc(moduleThreeMinutes/60);
+    moduleThreeMinutes = moduleThreeMinutes % 60;
+
     minutes += Math.trunc(seconds/60);
     hours += Math.trunc(minutes/60);
     minutes = minutes%60;
 
-
-
-
-
     console.log(`Kurs Opanuj JavaScript trwa ${hours} godzin i ${minutes} minut.\n` +
-    `Moduł Adama: ${'asd'} godzin ${'asd'} minut\n` +
-    `Moduł Przemka: ${'asd'} godzin ${'asd'} minut\n` +
-    `Moduł Marcina: ${'asd'} godzin ${'asd'} minut`);
+    `Moduł Adama: ${moduleOneHours} godzin ${moduleOneMinutes} minut\n` +
+    `Moduł Przemka: ${moduleTwoHours} godzin ${moduleTwoMinutes} minut\n` +
+    `Moduł Marcina: ${moduleThreeHours} godzin ${moduleThreeMinutes} minut`);
   }
+
+//   function convertTime(h,m,s) {
+//     m += Math.trunc(s/60);
+//     h += Math.trunc(m/60);
+//     m = m % 60;
+
+//   }
   
   totalDuration();
