@@ -361,17 +361,20 @@ const lessons = [
     let minutes=0;
     let seconds=0;
 
-    let moduleOneTime=0;
+    let moduleOneHours=0,
+        moduleOneMinutes=0,
+        moduleOneSeconds=0,
+        moduleOnePercent=0;
 
-    let moduleOneHours=0;
-    let moduleOneMinutes=0;
-    let moduleOneSeconds=0;
-    let moduleTwoHours=0;
-    let moduleTwoMinutes=0;
-    let moduleTwoSeconds=0;
-    let moduleThreeHours=0;
-    let moduleThreeMinutes=0;
-    let moduleThreeSeconds=0;
+    let moduleTwoHours=0,
+        moduleTwoMinutes=0,
+        moduleTwoSeconds=0,
+        moduleTwoPercent=0;
+
+    let moduleThreeHours=0,
+        moduleThreeMinutes=0,
+        moduleThreeSeconds=0,
+        moduleThreePercent=0;
 
     for(let i=0; i<lessons.length; i++) {
         //get minutes and seconds from all course
@@ -409,10 +412,17 @@ const lessons = [
     hours += Math.trunc(minutes/60);
     minutes = minutes%60;
 
+    moduleOnePercent = Math.round(((moduleOneHours+moduleOneMinutes/60)/hours)*100);
+    moduleTwoPercent = Math.round(((moduleTwoHours+moduleTwoMinutes/60)/hours)*100);
+    moduleThreePercent = Math.round(((moduleThreeHours+moduleThreeMinutes/60)/hours)*100);
+
     console.log(`Kurs Opanuj JavaScript trwa ${hours} godzin i ${minutes} minut.\n` +
     `Moduł Adama: ${moduleOneHours} godzin ${moduleOneMinutes} minut\n` +
     `Moduł Przemka: ${moduleTwoHours} godzin ${moduleTwoMinutes} minut\n` +
-    `Moduł Marcina: ${moduleThreeHours} godzin ${moduleThreeMinutes} minut`);
+    `Moduł Marcina: ${moduleThreeHours} godzin ${moduleThreeMinutes} minunt\n` +
+    `Moduł Adama procentowo: ${moduleOnePercent}%\n` +
+    `Moduł Przemka procentowo: ${moduleTwoPercent}%\n` +
+    `Moduł Marcina procentowo: ${moduleThreePercent}%\n`);
   }
 
 //   function convertTime(h,m,s) {
