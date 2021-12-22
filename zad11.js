@@ -1,8 +1,8 @@
 function thing(box) {
-    box = box.replace(/\s/g, "");
-    box = box.split("");
+    box = box.replace(/\s/g, ""); //remove whitespaces from box
+    box = box.split(""); //split and add all chars to array
     for(let i=0; i<box.length; i++) {
-        if((i == 6 && box[i] != '*') || (i == 8 && box[i] != '*')) {
+        if((i == 6 && box[i] != '*') || (i == 8 && box[i] != '*')) { //check what is inside the box on upper position and lower position
             return true;
         }
     }
