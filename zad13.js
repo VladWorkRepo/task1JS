@@ -3,8 +3,6 @@ function isogram(word) {
     //splitting the string, checking every character and it's index and then matching index of character to index of string
     return word.split("").every((char,index) => word.indexOf(char) == index); 
 }
-
-
   
 function verify(input, goal) {
     if (input === goal) {

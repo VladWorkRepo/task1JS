@@ -1,7 +1,15 @@
 function thing(box) {
-    // return true / false
-}
+    box = box.replace(/\s/g, "");
+    box = box.split("");
+    for(let i=0; i<box.length; i++) {
+        if((i == 6 && box[i] != '*') || (i == 8 && box[i] != '*')) {
+            return true;
+        }
+    }
+    return false;
+  }
   
+
 function verify(input, goal) {
     if (input === goal) {
         console.log('Gratulacje!');
