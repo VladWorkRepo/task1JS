@@ -1,13 +1,12 @@
 function countWords(sentence) {
     sentence = sentence.toLowerCase().replace(',', '').split(" ");
-    //console.log(sentence);
-    let testarr={};
+    let testarr={}; //create new array where i will place words and counter
     let temp;
     let counter=0;
 
     for(let i=0; i<sentence.length; i++) {
-        temp=sentence[i];
-        for(let j=0; j<sentence.length; j++) {
+        temp=sentence[i]; //add element to temp
+        for(let j=0; j<sentence.length; j++) { //add another one loop to check one element from previous loop in each element in this loop
             if(temp == sentence[j]) {
                 counter++;
             } else {
@@ -15,7 +14,7 @@ function countWords(sentence) {
             }
             testarr[sentence[i]] = counter;
         }
-        counter=0;
+        counter=0; //reset counter
         
         
     }
