@@ -5,10 +5,11 @@ function checkISBN(isbn) {
     let x=10;
 
     for(let i=0; i<isbn.length; i++) {
+        //check if the element is equal "X" and replace him to 10
         if(isbn[i] == "X") {
             isbn[i] = isbn[i].replace("X",'10');
         }
-
+        
         if(temp == undefined) {
             temp=isbn[i]*x;
         } else if(temp != undefined) {
