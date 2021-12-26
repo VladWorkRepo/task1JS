@@ -1,16 +1,30 @@
 function findTags(message) {
-    let temp = message.split("#");
-    message = message.split(" ");
-    //console.log(message);
+    let test =[];
     let tab=[];
-    for(let i = 0; i<message.length; i++) {
+    let element;
+    message = message.split(" ");
+    
+    for(let i=0; i<message.length; i++) {
         if(message[i].includes("#")) {
-            tab.push(message[i].replace(/#|!/g, ''));
-        } else {
-            continue;
+            tab.push(message[i]);
         }
     }
-    return tab;
+
+    for(let j in tab) {
+        element = tab[j].replace(/!/g, '').split("#");
+        test.push(element);
+    }
+
+    test = test.flat();
+
+    for(let i in test) {
+        let el = test[i];
+        let index = test.indexOf(el);
+        if(test[i] == "") {
+            test.splice(index,1);
+        }
+    }
+    return test;
 }
   
 function verify(input, goal) {
